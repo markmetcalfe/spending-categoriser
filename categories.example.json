@@ -1,0 +1,75 @@
+{
+  "id": "total",
+  "description": "Total Profit/Loss over all categories",
+  "children": [
+    {
+      "id": "essential",
+      "description": "Essential",
+      "children": [
+        {
+          "id": "property",
+          "description": "Property",
+          "children": [
+            {"id": "mortgage", "description": "Mortgage"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "non_essential",
+      "description": "Non-Essential",
+      "children": [
+        {"id": "groceries", "description": "Groceries"},
+        {"id": "dining_out", "description": "Dining Out"},
+        {
+          "id": "transport",
+          "description": "Transport",
+          "children": [
+            {"id": "car", "description": "Car"},
+            {"id": "bus", "description": "Bus"}
+          ]
+        },
+        {
+          "id": "entertainment",
+          "description": "Entertainment",
+          "children": [
+            {"id": "going_out", "description": "Gigs / Going Out"}
+          ]
+        },
+        {"id": "health", "description": "Health"},
+        {
+          "id": "shopping",
+          "description": "Shopping",
+          "children": [
+            {"id": "clothes", "description": "Clothes"},
+            {"id": "electronics", "description": "Electronics"},
+            {"id": "home_shopping", "description": "Home Shopping"},
+            {"id": "furniture", "description": "Furniture"}
+          ]
+        },
+        {
+          "id": "hobbies",
+          "description": "Hobbies",
+          "children": [
+            {"id": "gaming", "description": "Gaming"}
+          ]
+        },
+        {"id": "holiday", "description": "Holiday"},
+        {
+          "id": "subscriptions",
+          "description": "Subscriptions",
+          "children": [
+            {"id": "mobile", "description": "Phone Plan"}
+          ]
+        },
+        {"id": "personal_insurance", "description": "Personal Insurance"}
+      ]
+    },
+    {
+      "id": "income",
+      "description": "Income"
+    },
+    {"id": "transfers", "description": "Transfers", "hidden": true},
+    {"id": "other", "description": "Other"}
+  ]
+}
