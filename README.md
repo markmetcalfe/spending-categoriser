@@ -25,6 +25,9 @@ This project is a spending categoriser that helps you analyse your bank statemen
 
 1. Install dependencies:
    ```sh
+   rm -rf .venv && \
+   python -m venv .venv && \
+   source .venv/bin/activate && \
    pip install -r requirements.txt
    ```
 2. Place your CSV files in the `statements/` folder.
