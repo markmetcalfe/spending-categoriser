@@ -54,12 +54,20 @@ def prompt_category(transaction: sqlite3.Row, categories: List[Dict[str, str]]) 
     print(f"""
 {transaction['description']} {transaction['part'] or ''} {transaction['code'] or ''} {transaction['ref'] or ''}
 Amount: {transaction['amount']} Date: {date_str} Account: {transaction['account']} ID: {transaction['id']}
-Category: {category_description or 'None'}
+\nCategory: {category_description or 'None'}
 """)
     print("Please choose a category:")
-    for i, cat in enumerate(categories):
-        print(f"  {i+1}. {cat['description']}")
-    choice = input(f"Category number or name: ").strip()
+    # Display categories in 3 columns
+    col_width = max(len(cat['description']) for cat in categories) + 5
+    for i in range(0, len(categories), 3):
+        row = ""
+        for j in range(3):
+            if i + j < len(categories):
+                cat_num = i + j + 1
+                cat_desc = categories[i + j]['description']
+                row += f"{cat_num:3d}. {cat_desc:{col_width}}"
+        print(row)
+    choice = input(f"\nCategory number or name: ").strip()
     if choice.isdigit() and 1 <= int(choice) <= len(categories):
         return categories[int(choice)-1]
     else:
