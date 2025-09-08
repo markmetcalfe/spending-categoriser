@@ -36,7 +36,18 @@
             {"id": "going_out", "description": "Gigs / Going Out"}
           ]
         },
-        {"id": "health", "description": "Health"},
+        {
+          "id": "health",
+          "description": "Health",
+          "children": [
+            {"id": "medical", "description": "Medical"},
+            {"id": "dental", "description": "Dental"},
+            {"id": "pharmacy", "description": "Pharmacy"},
+            {"id": "hair", "description": "Hair"},
+            {"id": "piercings", "description": "Piercings & Tattoos"},
+            {"id": "fitness", "description": "Fitness"}
+          ]
+        },
         {
           "id": "shopping",
           "description": "Shopping",
