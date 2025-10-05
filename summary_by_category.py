@@ -60,6 +60,28 @@ def print_category_summary(category: Dict[str, Any], depth: int = 0):
     for child in category.get('children', []):
         print_category_summary(child, depth + 1)
 
+def print_overall_summary(args, category: Dict[str, Any]):
+    from datetime import datetime
+    from_date = args.from_date
+    to_date = args.to_date
+    total_amount = category['total_amount']
+    print(f"Total: ${total_amount:.2f}")
+    if not from_date or not to_date:
+        return
+    d1 = datetime.strptime(from_date, "%Y-%m-%d")
+    d2 = datetime.strptime(to_date, "%Y-%m-%d")
+    days = (d2 - d1).days + 1
+    weeks = days / 7
+    if weeks < 1:
+        return
+    per_week = total_amount / weeks
+    print(f"Per week: ${per_week:.2f} (from {from_date} to {to_date}, {weeks:.2f} weeks)")
+    months = days / 30.44
+    if months < 1:
+        return
+    per_month = total_amount / months
+    print(f"Per month: ${per_month:.2f} (from {from_date} to {to_date}, {months:.2f} months)")
+
 def main():
     parser = argparse.ArgumentParser(description='Summarise transactions by category.')
     parser.add_argument('--from-date', type=str, help='Start date (YYYY-MM-DD)')
@@ -71,6 +93,7 @@ def main():
         categories = json.load(f)
     category_summaries = get_category_summary(conn, categories, args.from_date, args.to_date)
     print_category_summary(category_summaries)
+    print_overall_summary(args, category_summaries)
     conn.close()
 
 if __name__ == "__main__":
